@@ -31,6 +31,33 @@ Update this section when files are added.
 - Ask before making big changes.
 - Ask rather than guess when something is unclear.
 
+## Design Direction
+
+Look and feel: "Open Road", friendly and rounded, made for students. All values live as CSS variables at the top of `css/style.css`; use the variables, never hard-coded colors, fonts or radii. New pages link `css/style.css` and `js/theme.js` and reuse its classes (`.site-header`, `.card`, `.panel`, `.button`, `.secondary`).
+
+**Palette** (every text/background pair meets 4.5:1 contrast)
+
+| Role | Light (default) | Dark |
+|---|---|---|
+| Page background `--bg` | `#f1f8f5` | `#0c1f1c` |
+| Surface (cards, panels) `--surface` | `#ffffff` | `#13302b` |
+| Text `--text` | `#12302b` | `#eaf7f3` |
+| Muted text `--muted` | `#3f5a54` | `#a7c9c0` |
+| Borders `--border` | `#9dbfb5` | `#4c7a6f` |
+| Accent (buttons, links) `--accent` | `#0b6e5f` | `#5fd3bc` |
+| Text on accent `--accent-text` | `#ffffff` | `#06201b` |
+| Highlight `--sun` | `#ffd23f` | `#e0b22a` |
+
+**Typography**
+- Headings: Fredoka, weight 600 (`--font-heading`). Page title scales with the screen (`clamp(2.25rem, 6vw, 3.75rem)`).
+- Body and controls: Nunito, 400 / 600 / 700 (`--font-body`), 1.125rem base size, 1.6 line height.
+- Fonts are loaded once, by the `@import` at the top of `css/style.css`.
+
+**Spacing and shape**
+- Cards and panels: 1.75rem padding, 24px corners (`--radius-card`), 2px border.
+- Buttons are pill-shaped (`--radius-pill`), at least 48px tall; fields have 12px corners (`--radius-field`) and are at least 44px tall.
+- Gap between cards and panels: 1.5rem. Page content is at most 62rem wide, with 1.5rem padding (2rem from tablet width up).
+
 ## Feature Plan
 
 A portal for students to try small tools about distribution and transportation.

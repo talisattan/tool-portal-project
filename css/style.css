@@ -1,28 +1,40 @@
+/* Design direction: "Open Road". Fonts load here so every page gets them. */
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap");
+
 /* Colors live in variables so the light and dark themes share one stylesheet. */
 :root {
-  --bg: #f6f7f9;
+  --bg: #f1f8f5;
   --surface: #ffffff;
-  --text: #1a1d23;
-  --muted: #4a5160;
-  --border: #c9ced8;
-  --accent: #0b5cad;
+  --text: #12302b;
+  --muted: #3f5a54;
+  --border: #9dbfb5;
+  --accent: #0b6e5f;
   --accent-text: #ffffff;
+  --sun: #ffd23f;
   --danger: #b00020;
-  --good-bg: #e3f2e6;
-  --focus: #0b5cad;
+  --good-bg: #dff1ea;
+  --focus: #0b6e5f;
+
+  --font-heading: "Fredoka", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --radius-card: 24px;
+  --radius-field: 12px;
+  --radius-pill: 999px;
 }
 
 :root[data-theme="dark"] {
-  --bg: #12151b;
-  --surface: #1c2029;
-  --text: #eef0f4;
-  --muted: #b4bac7;
-  --border: #3a4152;
-  --accent: #7ab7ff;
-  --accent-text: #0a1220;
+  --bg: #0c1f1c;
+  --surface: #13302b;
+  --text: #eaf7f3;
+  --muted: #a7c9c0;
+  --border: #4c7a6f;
+  --accent: #5fd3bc;
+  --accent-text: #06201b;
+  --sun: #e0b22a;
   --danger: #ff8a9b;
-  --good-bg: #1f3a28;
-  --focus: #7ab7ff;
+  --good-bg: #1b4a3f;
+  --focus: #5fd3bc;
 }
 
 * { box-sizing: border-box; }
@@ -31,8 +43,10 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 1rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font: 1.125rem/1.6 var(--font-body);
 }
+
+h1, h2, h3 { font-family: var(--font-heading); font-weight: 600; }
 
 a { color: var(--accent); }
 
@@ -44,64 +58,70 @@ a { color: var(--accent); }
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem 1rem;
-  padding: 0.75rem 1rem;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  background: var(--bg);
 }
 
-.site-header .brand { font-weight: 700; font-size: 1.15rem; color: var(--text); text-decoration: none; }
+.site-header .brand {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--text);
+  text-decoration: none;
+}
 
-main { max-width: 60rem; margin: 0 auto; padding: 1rem; }
+main { max-width: 62rem; margin: 0 auto; padding: 1.5rem; }
 
-h1 { line-height: 1.2; }
+h1 { line-height: 1.1; font-size: clamp(2.25rem, 6vw, 3.75rem); }
 .muted { color: var(--muted); }
 
 button, .button {
-  min-height: 44px;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--accent);
-  border-radius: 6px;
+  min-height: 48px;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-pill);
   background: var(--accent);
   color: var(--accent-text);
   font: inherit;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
 }
 
-button.secondary { background: transparent; color: var(--accent); }
+button.secondary { background: var(--surface); color: var(--text); border-color: var(--border); }
 
 input, select {
   min-height: 44px;
   width: 100%;
-  padding: 0.4rem 0.6rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-field);
   background: var(--surface);
   color: var(--text);
   font: inherit;
 }
 
-label { font-weight: 600; }
+label { font-weight: 700; }
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .card, .panel {
-  padding: 1rem;
+  padding: 1.75rem;
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-card);
 }
 
 .card h2 { margin-top: 0; }
 
-.panel { margin-bottom: 1rem; }
+.panel { margin-bottom: 1.5rem; }
 .panel h2 { margin-top: 0; }
 
 .stop-row { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
@@ -118,11 +138,11 @@ th, td { padding: 0.4rem; border: 1px solid var(--border); text-align: left; }
 td input { min-width: 5rem; }
 td.na { background: var(--bg); color: var(--muted); text-align: center; }
 
-.error { color: var(--danger); font-weight: 600; }
+.error { color: var(--danger); font-weight: 700; }
 
-.result { padding: 1rem; background: var(--good-bg); border-radius: 8px; }
+.result { padding: 1.5rem; margin-bottom: 1.5rem; background: var(--good-bg); border-radius: var(--radius-card); }
 .result .route { font-size: 1.15rem; font-weight: 700; overflow-wrap: anywhere; }
 
 @media (min-width: 48rem) {
-  main { padding: 1.5rem; }
+  main { padding: 2rem; }
 }
