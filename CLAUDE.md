@@ -10,6 +10,7 @@
 ```
 index.html           portal home page (list of tools)
 route-finder.html    shortest route finder tool page
+tool-1.html          placeholder "coming soon" tool page
 css/style.css        shared styles, light/dark theme colors
 js/theme.js          light/dark theme toggle
 js/route-finder.js   route finder logic
@@ -44,5 +45,7 @@ A portal for students to try small tools about distribution and transportation.
 
 ### Phases
 
-1. **Phase 1: portal plus first tool.** Homepage, theme toggle, and the shortest route finder (type stops and a distance table, get the shortest round trip). Done.
+1. **Phase 1: portal plus first tool.**
+   - Portal homepage with a placeholder "Tool 1 — coming soon" card that opens and returns via the header link (`tool-1.html`). Done.
+   - Theme toggle and the shortest route finder (type stops and a distance table, get the shortest round trip). Done.
 2. **Phase 2: more tools.** Add further tools one at a time, each with its own card on the homepage.
