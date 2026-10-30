@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tool 1 &mdash; coming soon</title>
+  <title>Shortest Route Finder</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/theme.js"></script>
 </head>
@@ -14,9 +14,40 @@
   </header>
 
   <main>
-    <h1>Tool 1 &mdash; coming soon</h1>
-    <p class="muted">This tool has not been built yet.</p>
-    <p><a class="button" href="index.html">Back to the homepage</a></p>
+    <h1>Shortest route finder</h1>
+    <p class="muted">Find the shortest round trip that starts at one stop, visits every other stop once, and returns to the start.</p>
+
+    <section class="panel">
+      <h2>1. Your stops</h2>
+      <p class="muted">Use 2 to 8 stops.</p>
+      <div id="stops"></div>
+      <button type="button" id="add-stop" class="secondary">Add a stop</button>
+      <div class="field">
+        <label for="start">Start and finish at</label>
+        <select id="start"></select>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>2. Distances between stops</h2>
+      <p class="muted">Enter the distance for each pair (any unit, such as km or miles). Going from A to B is treated the same as B to A.</p>
+      <div class="table-scroll" id="matrix"></div>
+    </section>
+
+    <p><button type="button" id="calculate">Find the shortest route</button></p>
+    <p id="error" class="error" role="alert"></p>
+    <div id="output" aria-live="polite"></div>
+
+    <section class="panel">
+      <h2>How it works</h2>
+      <ul>
+        <li>A <strong>round trip</strong> starts at one stop and ends back at the same stop.</li>
+        <li>The tool uses <strong>brute force</strong>: it tries every possible order of visiting the stops, adds up the distances for each, and keeps the smallest total.</li>
+        <li>That is fine for a handful of stops, but the number of orders grows very fast, which is why real delivery companies use smarter methods for large routes.</li>
+      </ul>
+    </section>
   </main>
+
+  <script src="js/route-finder.js"></script>
 </body>
 </html>
