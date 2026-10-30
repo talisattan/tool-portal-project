@@ -7,14 +7,17 @@
 
 ## Project Structure
 
-The repository is nearly empty for now:
-
 ```
-README.md    project readme
-CLAUDE.md    this file
+index.html           portal home page (list of tools)
+route-finder.html    shortest route finder tool page
+css/style.css        shared styles, light/dark theme colors
+js/theme.js          light/dark theme toggle
+js/route-finder.js   route finder logic
+README.md            project readme
+CLAUDE.md            this file
 ```
 
-Add new files here as the project grows and update this section.
+Update this section when files are added.
 
 ## Key Requirements
 
